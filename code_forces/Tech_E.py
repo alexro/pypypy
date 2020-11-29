@@ -24,22 +24,22 @@ else:
     # bon = b_pos + b_neg
     bon.sort(reverse=True)
 
-    print(bon)
+    # print(bon)
 
     sbros = boss[1]
 
     sum = 0
     b = 0
     for k in range(len(bon)):
-        print(sum, 'b before', b)
+        # print(sum, 'b before', b)
         sum += b
         b += bon[k]
         if b < 0 and sbros > 0:
             if len(bon) - 1 == k + sbros:
                 b = 0
                 sbros -= 1
-                print('sbros', sbros)
-        print(sum, 'b after', b)
+                # print('sbros', sbros)
+        # print(sum, 'b after', b)
     print(sum)
 
 '''
