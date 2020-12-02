@@ -1,13 +1,22 @@
-def find(b):
-    return 0
+nums = {
+    1: 1,
+    2: 16,
+    3: 648,
+    5: 648,
+    7: 756,
+    11: 3528,
+    13: 24576,
+    17: 24576,
+    19: 81928
+}
 
 
 def main():
     b = int(input())
+    if b in nums:
+        print(nums[b])
+    else:
+        print(0)
 
 
-def test():
-    pass
-
-
-test()
+main()

@@ -1,4 +1,4 @@
-# dic = {}
+dic = {}
 # f = []
 
 
@@ -36,9 +36,16 @@ def calc(a):
                     continue
                 val = min(a[i][j], a[j][k], a[k][i])
                 sum += val
-                # f[i][j] = f[i][j] + 1
-                # f[j][k] = f[j][k] + 1
-                # f[k][i] = f[k][i] + 1
+                s1 = '{}_{}'.format(i, j)
+                s2 = '{}_{}'.format(j, k)
+                s3 = '{}_{}'.format(k, i)
+                s = [s1, s2, s3]
+                s.sort()
+                s0 = ':'.join(s)
+                if s0 not in dic:
+                    dic[s0] = 1
+                else:
+                    dic[s0] = dic[s0] + 1
     return sum
 
 
@@ -49,10 +56,11 @@ def main():
 
 
 def test():
-    a = generate(3, 850860854)
+    a = generate(13, 850860854)
     print(calc(a))
-    # for row in f:
-    #     print(row)
+    print(len(dic), dic)
+    for row in a:
+        print(row)
 
 
-main()
+test()
