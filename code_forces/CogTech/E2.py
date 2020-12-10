@@ -12,6 +12,25 @@ def join(a):
     return ''.join(a)
 
 
+class Oper():
+    def __init__(self, v=0, op=''):
+        self.args = []
+        self.args.append(v)
+        self.op = op
+
+    def set(self, arg):
+        self.args.append(arg)
+
+    def calc(self):
+        pass
+
+    def __str__(self):
+        return str(self.args)
+
+
+tt = []
+
+
 def calc(t, sk, v, oper):
     if oper == '+':
         if len(t) > 0 and t[-1] == ')':
@@ -27,14 +46,13 @@ def calc(t, sk, v, oper):
 
 
 def parse(s):
-    sl = len(s)
-    if sl == 0:
+    if len(s) == 0:
         return 1
 
     a = []
     error = 0
     t = []
-    for k in range(sl):
+    for k in range(len(s)):
         ch = s[k]
         if ch in dic1:
             a.append(ch)
@@ -79,7 +97,7 @@ def solve(s):
 def test():
     # solve('([[]()]()[])')
     # solve('([]{})')
-    solve('([[]()]()[])')
+    solve('()[]{}')
 
 
 test()
