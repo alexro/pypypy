@@ -31,7 +31,9 @@ def solve(a, b, z):
             sm -= b[k - 1]
         sc1 = round(a[k] / z[0], digits)
         sc2 = round(sm / zs, digits)
-        if sc1 == sc2:
+        sc3 = round(a[k + zl - 1] / z[zl - 1], digits)
+
+        if sc1 == sc2 == sc3:
             ok = check(a, z, zl, k, sc1)
             if ok:
                 count += 1
