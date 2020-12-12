@@ -7,11 +7,14 @@ def prep(a):
     return b
 
 
+digits = 2
+
+
 def check(a, z, zl, k, sc):
     ok = True
     for k2 in range(k, k + zl):
         k3 = k2 - k
-        sc2 = round(a[k2] / z[k3], 1)
+        sc2 = round(a[k2] / z[k3], digits)
         if sc2 != sc:
             ok = False
             break
@@ -26,8 +29,8 @@ def solve(a, b, z):
         sm = b[k + zl - 1]
         if k > 0:
             sm -= b[k - 1]
-        sc1 = round(a[k] / z[0], 1)
-        sc2 = round(sm / zs, 1)
+        sc1 = round(a[k] / z[0], digits)
+        sc2 = round(sm / zs, digits)
         if sc1 == sc2:
             ok = check(a, z, zl, k, sc1)
             if ok:
@@ -58,7 +61,7 @@ def main():
 def test():
     a = [2, 4, 6, 2, 4, 7]
     z = [3, 6, 9]
-    b = prep(a, len(z))
+    b = prep(a)
     print(b)
     print(solve(a, b, z))
 
