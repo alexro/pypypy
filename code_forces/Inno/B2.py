@@ -12,11 +12,18 @@ def solve(a):
         if ia[0] == ib[0]:
             continue
 
+        if k in dic:
+            continue
+
         ic = b[ib[1]]
         if ic[0] == ia[0]:
             p = min(ia[1], ib[1])
             if p not in dic:
                 dic[p] = [ib, ia]
+            p = max(ia[1], ib[1])
+            dic[p] = []
+        else:
+            dic[k] = [ib]
 
     # print(dic)
     return dic
@@ -36,16 +43,18 @@ def result(dic):
         return
 
     res = []
+    count = 0
     for i, v in enumerate(dic):
-        if len(dic[v]) != 2:
+        if len(dic[v]) != 2 and len(dic[v]) != 0:
             print('No')
             return
-        else:
+        elif len(dic[v]) == 2:
+            count += 1
             ia = dic[v][0]
             ib = dic[v][1]
             res.append(str(ia[1] + 1) + ' ' + str(ib[1] + 1))
     print('Yes')
-    print(len(dic))
+    print(count)
     for s in res:
         print(s)
 
@@ -81,7 +90,7 @@ def test():
     # result(solve(a))
     # a = read('2 3 4 5 1')
     # result(solve(a))
-    a = read('2')
+    a = read('2 0 8 9 9 9 9 3')  # !
     result(solve(a))
 
 
