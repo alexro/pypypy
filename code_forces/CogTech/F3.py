@@ -38,7 +38,7 @@ def solve(a, b):
                 count += deactivate(a, k)
             else:
                 count += activate(a, k)
-    print(a, count)
+    # print(a, count)
     return count
 
 
@@ -61,4 +61,4 @@ def test():
     # print(solve(a, b))
 
 
-test()
+main()

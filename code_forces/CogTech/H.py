@@ -34,7 +34,7 @@ def solve(a, b, z):
         sc3 = round(a[k + zl - 1] / z[zl - 1], digits)
 
         if sc1 == sc2 == sc3:
-            ok = check(a, z, zl, k, sc1)
+            ok = True  # check(a, z, zl, k, sc1)
             if ok:
                 count += 1
             # print(k, sc1, sc2, ok)
