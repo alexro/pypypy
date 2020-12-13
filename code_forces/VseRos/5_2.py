@@ -46,15 +46,15 @@ def solve(a):
     # print(sm2)
     ok = check([sm1, sm2, sm3])
     # print(ok)
-    while not ok:
-        if sm1 <= 0:
+    while (not ok) and (k1 < k3 - 2):
+        if sm1 <= 0 and k1 < k3 - 2:
             k1 += 1
             sm1 += a[k1]
             sm2 -= a[k1]
             ok = check([sm1, sm2, sm3])
             if ok:
                 break
-        if sm3 <= 0:
+        if sm3 <= 0 and k3 > k1 + 2:
             k3 -= 1
             sm3 += a[k3]
             sm2 -= a[k3]
@@ -62,10 +62,14 @@ def solve(a):
             if ok:
                 break
     # print(k1, k3)
-    n1 = k1 + 1
-    n3 = len(a) - k3
-    n2 = len(a) - n3 - n1
-    return [n1, n2, n3]
+    ok = check([sm1, sm2, sm3])
+    if ok:
+        n1 = k1 + 1
+        n3 = len(a) - k3
+        n2 = len(a) - n3 - n1
+        return [n1, n2, n3]
+    else:
+        return []
 
 
 def main():
@@ -75,7 +79,10 @@ def main():
         d = int(input())
         a[k] = d
     res = solve(a)
-    print(res[0], res[1], res[2])
+    if len(res) == 3:
+        print(res[0], res[1], res[2])
+    else:
+        print(0)
 
 
 def test():
