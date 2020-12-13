@@ -12,12 +12,11 @@ def solve(a):
         if ia[0] == ib[0]:
             continue
 
-        if ib[1] in dic:
-            dic[ib[1]].append(ib)
-        else:
-            if k not in dic:
-                dic[k] = []
-            dic[k].append(ib)
+        ic = b[ib[1]]
+        if ic[0] == ia[0]:
+            p = min(ia[1], ib[1])
+            if p not in dic:
+                dic[p] = [ib, ia]
 
     # print(dic)
     return dic
@@ -25,10 +24,9 @@ def solve(a):
 
 def read(s):
     s = s.split()
-    a = []
+    a = [0] * len(s)
     for k in range(len(s)):
-        if k == 0 or s[k-1] != s[k]:
-            a.append((int(s[k]), len(a), k))
+        a[k] = (int(s[k]), k)
     return a
 
 
@@ -45,7 +43,7 @@ def result(dic):
         else:
             ia = dic[v][0]
             ib = dic[v][1]
-            res.append(str(ia[2] + 1) + ' ' + str(ib[2] + 1))
+            res.append(str(ia[1] + 1) + ' ' + str(ib[1] + 1))
     print('Yes')
     print(len(dic))
     for s in res:
