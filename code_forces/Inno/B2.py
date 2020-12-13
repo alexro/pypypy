@@ -53,19 +53,35 @@ def result(dic):
 def main():
     n = int(input())
     s = input()
-    a = read(s)
-    res = solve(a)
-    result(res)
+
+    if n == 1:
+        print('Yes')
+        print(0)
+    else:
+        a = read(s)
+
+        ok = True
+        for i, v in enumerate(a):
+            if i > 0 and a[i] < a[i - 1]:
+                ok = False
+                break
+
+        if ok:
+            print('Yes')
+            print(0)
+        else:
+            res = solve(a)
+            result(res)
 
 
 def test():
-    a = read('2 5 5 2 10 9')
-    result(solve(a))
-    a = read('2 1 1 2 2 9 8')
-    result(solve(a))
-    a = read('2 3 4 5 1')
-    result(solve(a))
-    a = read('3 2 1')
+    # a = read('2 5 5 2 10 9')
+    # result(solve(a))
+    # a = read('2 1 1 2 2 9 8')
+    # result(solve(a))
+    # a = read('2 3 4 5 1')
+    # result(solve(a))
+    a = read('2')
     result(solve(a))
 
 
