@@ -90,8 +90,10 @@ def test():
     # result(solve(a))
     # a = read('2 3 4 5 1')
     # result(solve(a))
-    a = read('2 0 8 9 9 9 9 3')  # !
+    # a = read('2 0 8 9 9 9 9 3')  # !
+    # result(solve(a))
+    a = read('2 3 4 0')  # !
     result(solve(a))
 
 
-main()
+test()

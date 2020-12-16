@@ -13,14 +13,22 @@ int query(int l, int r) {  // sum on interval [l, r)
 }
 """
 
-N = 50
+N = 16
 n = 0
 t = [0] * (2 * N)
 
 
+def f_sum(x, y):
+    return x + y
+
+
+def f_max(x, y):
+    return max(x, y)
+
+
 def build():
     for i in range(n - 1, -1, -1):
-        t[i] = t[2 * i] + t[2 * i + 1]
+        t[i] = f_max(t[2 * i], t[2 * i + 1])
 
 
 def query(l, r):
@@ -28,12 +36,13 @@ def query(l, r):
     l += n
     r += n
     while l < r:
+        print(l, r)
         if l % 2 == 1:
-            res += t[l]
+            res = f_max(res, t[l])
             l += 1
         if r % 2 == 1:
             r -= 1
-            res += t[r]
+            res = f_max(res, t[r])
         l >>= 1
         r >>= 1
     return res
@@ -44,7 +53,7 @@ for i in range(n):
     t[i + n] = i
 build()
 
-for p, v in enumerate(t):
-    print(p, v)
-
-print(query(3, 11))
+# for p, v in enumerate(t):
+#     print(p, v)
+print(t)
+print(query(0, 15))
