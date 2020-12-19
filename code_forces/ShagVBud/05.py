@@ -72,8 +72,6 @@ def mark_i(b, i):
         p = i.pop()
         y = p[0]
         x = p[1]
-        if y == 8 and x == 1:
-            print()
         if b[y][x] <= 0:
             continue
         if b[y - 1][x] < -1:
@@ -141,6 +139,7 @@ def hills(a, d):
         print(key, m, h)
     print('--', ct, ch)
     return ct
+
 
 def solve(a):
     print_(a)
