@@ -160,6 +160,30 @@ def solve(a):
     print(t)
 
 
+"""
+10 4
+3 2 0 0
+2 4 5 0
+0 0 0 0
+0 1 3 0
+0 0 0 0
+3 2 0 0
+2 0 0 0
+0 0 6 0
+0 1 5 0
+0 0 0 0
+"""
+
+
+def main():
+    n, m = map(int, input().split())
+    a = []
+    for _ in range(n):
+        r = list(map(int, input().split()))
+        a.append(r)
+    solve(a)
+
+
 inp = [
     '10 4',
     '3 2 0 0',
@@ -182,8 +206,7 @@ def test():
     for c in range(1, n + 1):
         r = list(map(int, inp[c].split()))
         a.append(r)
-    # a = prep(a)
     solve(a)
 
 
-test()
+main()
