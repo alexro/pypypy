@@ -1,9 +1,3 @@
-def print_(a):
-    print()
-    for y in a:
-        print(y)
-
-
 def mark_0(b):
     y = b[0]
     for x in range(len(y)):
@@ -20,8 +14,6 @@ def mark_0(b):
             y[0] = -1
         if y[len(y) - 1] != 0:
             y[len(y) - 1] = -1
-
-    print_(b)
 
 
 def mark(b, y, x):
@@ -47,8 +39,6 @@ def mark_all(b):
         for x in range(len(b[y]) - 2, 0, -1):
             mark(b, y, x)
 
-    print_(b)
-
 
 def count(b):
     m = i = 0
@@ -60,7 +50,6 @@ def count(b):
             elif b[y][x] > 0:
                 i += 1
                 p.append((y, x))
-    print(m, i, p)
     return m, i, p
 
 
@@ -103,21 +92,14 @@ def mark_i(b, i):
             d[l].append((y, x))
             l -= 1
             d[l] = []
-
-    print_(b)
-    print(d)
-
     d2 = {}
     for key in d:
         if len(d[key]) > 0:
             d2[key] = d[key]
-
-    print(d2)
     return d2
 
 
 def hills(a, d):
-    print(a)
     ct = ch = -1
     for key in d:
         p = d[key]
@@ -136,13 +118,10 @@ def hills(a, d):
         if h > ch:
             ct = len(p)
             ch = h
-        print(key, m, h)
-    print('--', ct, ch)
     return ct if ch > 0 else 0
 
 
 def solve(a):
-    print_(a)
     b = []
     for y in a:
         b.append(y[:])
@@ -158,8 +137,6 @@ def solve(a):
     d2 = mark_i(b2, p2)
     if len(d2) < len(d):
         d = d2
-    print_(b)
-    print_(b2)
     t = hills(a, d)
     if m > i:
         print('MAINLAND')
@@ -167,21 +144,6 @@ def solve(a):
         print('ISLANDS')
     print(len(d))
     print(t)
-
-
-"""
-10 4
-3 2 0 0
-2 4 5 0
-0 0 0 0
-0 1 3 0
-0 0 0 0
-3 2 0 0
-2 0 0 0
-0 0 6 0
-0 1 5 0
-0 0 0 0
-"""
 
 
 def main():
@@ -193,29 +155,4 @@ def main():
     solve(a)
 
 
-inp = [
-    '10 4',
-    '3 2 0 0',
-    '2 4 5 0',
-    '0 0 0 0',
-    '0 3 3 0',
-    '0 0 0 0',
-    '3 2 0 0',
-    '2 0 0 0',
-    '0 0 1 0',
-    '0 1 1 0',
-    '0 0 0 0'
-]
-
-
-def test():
-    n, m = map(int, inp[0].split())
-    a = []
-
-    for c in range(1, n + 1):
-        r = list(map(int, inp[c].split()))
-        a.append(r)
-    solve(a)
-
-
-test()
+main()
