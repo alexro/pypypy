@@ -138,7 +138,7 @@ def hills(a, d):
             ch = h
         print(key, m, h)
     print('--', ct, ch)
-    return ct
+    return ct if ch > 0 else 0
 
 
 def solve(a):
@@ -149,8 +149,17 @@ def solve(a):
     mark_0(b)
     mark_all(b)
     m, i, p = count(b)
+    p2 = p[:]
+    p2.reverse()
+    b2 = []
+    for y in b:
+        b2.append(y[:])
     d = mark_i(b, p)
-    print(b)
+    d2 = mark_i(b2, p2)
+    if len(d2) < len(d):
+        d = d2
+    print_(b)
+    print_(b2)
     t = hills(a, d)
     if m > i:
         print('MAINLAND')
@@ -189,12 +198,12 @@ inp = [
     '3 2 0 0',
     '2 4 5 0',
     '0 0 0 0',
-    '0 1 3 0',
+    '0 3 3 0',
     '0 0 0 0',
     '3 2 0 0',
     '2 0 0 0',
-    '0 0 6 0',
-    '0 1 5 0',
+    '0 0 1 0',
+    '0 1 1 0',
     '0 0 0 0'
 ]
 
@@ -209,4 +218,4 @@ def test():
     solve(a)
 
 
-main()
+test()
