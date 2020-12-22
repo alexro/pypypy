@@ -13,7 +13,15 @@ def generate(n, x0):
                 pass
             else:
                 k = x % (10 ** 7)
+                if k == 12851754:
+                    print('YES k')
+                if k in dic:
+                    dic[k] = dic[k] + 1
+                else:
+                    dic[k] = 1
                 x = (1664525 * x + 1013904223) % (2 ** 32)
+                if x == 12851754:
+                    print('YES x')
             ai.append(k)
         a.append(ai)
         # f.append([0] * len(ai))
@@ -52,15 +60,22 @@ def calc(a):
 def main():
     a = list(map(int, input().split()))
     a = generate(a[0], a[1])
-    print(calc(a))
+    for y in a:
+        print(y)
+    # print(calc(a))
 
 
 def test():
-    a = generate(13, 850860854)
-    print(calc(a))
-    print(len(dic), dic)
-    for row in a:
-        print(row)
-
+    a = generate(3, 3850860854)
+    # print(calc(a))
+    # print(len(dic), dic)
+    # for row in a:
+    #     print(row)
+    # count = 0
+    # for v in dic:
+    #     if dic[v] > 1:
+    #         count += 1
+    #         print(v, dic[v])
+    # print(count)
 
 test()
