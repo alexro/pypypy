@@ -1,39 +1,32 @@
-def solve(n, p):
-    d = [0] * (n + 1)
-    d[1] = 1
-    start = 2
-    m = 0
+def bip(a, m):
+    res = 1
+    n = m - 2
+    while n > 0:
+        if n % 2 == 1:
+            res = res * a % m
+        a = a * a % m
+        n >>= 1
+    return res
 
-    while start <= len(d) - 1:
-        m += 1
-        p2 = p * m + 1
-        for k in range(start, n + 1):
-            if k > p2:
-                break
-            if d[k] != 0:
-                continue
-            if p2 % k == 0:
-                d[k] = p2 // k
-                if k == start:
-                    start += 1
 
-    res = 0
-    for k in range(1, n + 1):
-        res += d[k]
-
-    # print(d)
-    print(res)
+def solve(n, m):
+    sm = 1
+    for k in range(2, n + 1):
+        sm += bip(k, m)
+    print(sm)
 
 
 def main():
-    n, p = map(int, input().split())
-    solve(n, p)
+    n, m = map(int, input().split())
+    solve(n, m)
 
 
 def test():
-    # solve(1, 2)
-    # solve(3, 5)
+    solve(1, 2)
+    solve(3, 5)
     solve(6, 13)
+    solve(1000, 9973)
+    solve(1000000, 999999937)
 
 
 main()
