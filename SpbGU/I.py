@@ -9,24 +9,39 @@ def bip(a, m):
     return res
 
 
-def solve(n, m):
+def solve1(n, m):
     sm = 1
     for k in range(2, n + 1):
         sm += bip(k, m)
     print(sm)
 
 
+def solve2(n, m):
+    r = [0] * (n + 1)
+    r[1] = 1
+    for i in range(2, n + 1):
+        d = (m - (m // i) * r[m % i] % m) % m
+        r[i] = d
+    print(sum(r))
+
+
 def main():
     n, m = map(int, input().split())
-    solve(n, m)
+    solve2(n, m)
 
 
 def test():
-    solve(1, 2)
-    solve(3, 5)
-    solve(6, 13)
-    solve(1000, 9973)
-    solve(1000000, 999999937)
+    solve1(1, 2)
+    solve2(1, 2)
+    solve1(3, 5)
+    solve2(3, 5)
+    solve1(6, 13)
+    solve2(6, 13)
+    solve1(1000, 9973)
+    solve2(1000, 9973)
+    print('now wait...')
+    solve1(10000000, 999999937)
+    solve2(10000000, 999999937)
 
 
 main()
