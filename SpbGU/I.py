@@ -20,8 +20,7 @@ def solve2(n, m):
     r = [0] * (n + 1)
     r[1] = 1
     for i in range(2, n + 1):
-        d = (m - (m // i) * r[m % i] % m) % m
-        r[i] = d
+        r[i] = (m - (m // i) * r[m % i] % m) % m
     print(sum(r))
 
 
