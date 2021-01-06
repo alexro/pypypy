@@ -1,29 +1,3 @@
-def parse(s, x, y, z):
-    s = s.upper()
-    for ch in s:
-        if ch == 'R':
-            x += 1
-        elif ch == 'L':
-            x -= 1
-        elif ch == 'F':
-            y += 1
-        elif ch == 'B':
-            y -= 1
-        elif ch == 'U':
-            z += 1
-        elif ch == 'D':
-            z -= 1
-    return x, y, z
-
-
-def run_0():
-    return 1
-
-
-def run_1():
-    return 1
-
-
 START_POS = 'RRFFU'
 
 
@@ -79,6 +53,17 @@ def run(k):
                 r += 1
 
 
+def main():
+    l_ = int(input())
+
+    if l_ <= 1:
+        print(0)
+    elif l_ <= 4:
+        print(1)
+    else:
+        print(run(l_))
+
+
 def compare(s1, s2):
     print(s1, ' : ', s2, ' : ', s1 == s2)
 
@@ -90,18 +75,4 @@ def tests():
     compare(move_under(5, 'B'), 'RRRBLLLBRRRBLLLU')
 
 
-def main():
-    l_: int = int(input())
-    r = 0
-
-    if l_ == 3:
-        r = run_0()
-    elif l_ == 4:
-        r = run_1()
-    else:
-        r = run(l_ - 1)
-
-    print(r)
-
-
-tests()
+main()
