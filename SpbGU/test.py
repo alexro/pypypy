@@ -1,33 +1,81 @@
-def solve(a, n):
-    s = sum(a)
-    cur = [0, 0]
-    for i in range(n):
-        print('a i:', a[i])
-        cur[i % 2] += a[i] - 1
+n, m = map(int, input().split())
 
-    print(cur)
-    for j in range(2):
-        if 2 * cur[j] > s:
-            continue
-        for i in range(n):
-            if i % 2 == j:
-                a[i] = 1
+a = []
+
+
+def is_center(a, y, x):
+    count1 = count2 = count3 = count4 = 0
+    c = ''
+
+    # up
+    y1 = y
+    x1 = x
+    while True:
+        y2 = y1 - 1
+        if y2 < 0:
+            break
+        c = a[y2][x]
+        if c == "W":
+            break
+        count1 += 1
+        y1 = y2
+
+    # down
+    y1 = y
+    x1 = x
+    while True:
+        y2 = y1 + 1
+        if y2 == n:
+            break
+        c = a[y2][x]
+        if c == "W":
+            break
+        count2 += 1
+        y1 = y2
+
+    # left
+    y1 = y
+    x1 = x
+    while True:
+        x2 = x1 - 1
+        if x2 < 0:
+            break
+        c = a[y1][x2]
+        if c == "W":
+            break
+        count3 += 1
+        x1 = x2
+
+    # right
+    y1 = y
+    x1 = x
+    while True:
+        x2 = x1 + 1
+        if x2 == m:
+            break
+        c = a[y1][x2]
+        if c == "W":
+            break
+        count4 += 1
+        x1 = x2
+
+    print(c)
+    return count1 == count2 == count3 == count4 and a[y][x] == 'B'
+
+
+for k in range(n):
+    s = input()
+    a.append(s)
+
+for row in a:
+    print(row)
+
+for y in range(n):
+    c = False
+    for x in range(m):
+        if is_center(a, y, x):
+            print(y+1, x+1)
+            c = True
+            break
+    if c:
         break
-
-    print(*a)
-
-
-def main():
-    for t in range(int(input())):
-        n = int(input())
-        a = list(map(int, input().split()))
-        solve(a)
-
-
-def test():
-    solve([1, 2, 3, 4, 5], 5)
-
-
-test()
-
-print()
