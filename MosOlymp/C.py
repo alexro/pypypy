@@ -54,4 +54,14 @@ def test():
     solve(n, m, k, a, b, v, t)
 
 
-test()
+def f(inp):
+    return round(float(inp)), inp
+
+
+def test2():
+    s = '1.2 1.5 2.6'
+    a = tuple(map(f, s.split()))
+    print(a)
+
+
+test2()

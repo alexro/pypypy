@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;            /* Reset default margin */
+        }
+        iframe {
+            position: fixed;
+            background: #000;
+            border: none;
+            top: 0; right: 0;
+            bottom: 0; left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="fr" src="https://www.worldtimeserver.com/" frameborder="0"></iframe>
+
+    <script type="text/javascript">
+        var timer = setInterval(()=>{
+            var iframe = document.getElementById('fr');
+            iframe.src = iframe.src;
+        }, 3000)
+    </script>
+</body>
+</html>
